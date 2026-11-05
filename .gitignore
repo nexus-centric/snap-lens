@@ -1,0 +1,8 @@
+node_modules
+dist
+tmp
+screenshots
+*.log
+# large test photo, download it with the link in test-images/SOURCES.md
+test-images/large-*.jpg
+.DS_Store

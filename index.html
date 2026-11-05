@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="theme-color" content="#1f2023" />
+  <meta name="description" content="Snap Lens: a browser photo editor that copies the color and look of reference photos. Runs fully on your device." />
+  <title>Snap Lens - copy the look of any photo</title>
+</head>
+<body>
+  <div class="app" id="app">
+    <header class="topbar">
+      <div class="brand"><strong>Snap Lens</strong><span class="brand-sub">Photos stay on this device</span></div>
+      <div class="tools">
+        <button id="openBtn" class="btn"><span class="hide-sm">Open photos</span><span class="show-sm">Open</span></button>
+        <input type="file" id="openInput" accept="image/*" multiple hidden />
+        <span class="sep"></span>
+        <button id="undoBtn" class="btn ghost" title="Undo (Ctrl+Z)" disabled>Undo</button>
+        <button id="redoBtn" class="btn ghost hide-sm" title="Redo (Ctrl+Shift+Z)" disabled>Redo</button>
+        <span class="sep"></span>
+        <button id="splitBtn" class="btn ghost" aria-pressed="false" title="Before and after split">Split</button>
+        <button id="beforeBtn" class="btn ghost hide-sm" aria-pressed="false" title="Show original (backslash key)">Before</button>
+        <span class="sep hide-sm"></span>
+        <button id="zoomFit" class="btn ghost hide-sm" title="Fit to screen">Fit</button>
+        <button id="zoom100" class="btn ghost hide-sm" title="Zoom 2x">2x</button>
+        <button id="resetAll" class="btn ghost" title="Reset all adjustments">Reset</button>
+        <button id="exportQuick" class="btn primary" disabled>Export</button>
+      </div>
+    </header>
+    <main class="workspace">
+      <section class="viewer" id="viewer" aria-label="Photo">
+        <div class="stage" id="stage">
+          <div class="empty" id="empty">
+            <h1>Copy the look of any photo</h1>
+            <ol>
+              <li>Open the photo you want to edit.</li>
+              <li>Add one or more reference photos whose color and mood you like.</li>
+              <li>Snap Lens copies the look into normal editing sliders that you can fine-tune.</li>
+            </ol>
+            <button class="btn primary" id="emptyOpen">Open a photo</button>
+            <p class="hint">Or drop or paste images here. Nothing is uploaded.</p>
+          </div>
+          <div class="canvas-box" id="canvasBox">
+            <canvas id="view"></canvas>
+            <div class="split" id="split" role="slider" tabindex="0" aria-label="Before and after split position" aria-valuemin="0" aria-valuemax="100"><span></span></div>
+            <span class="tag left" id="tagBefore">Before</span><span class="tag right" id="tagAfter">After</span>
+            <div class="crop" id="crop" hidden>
+              <div class="crop-rect" id="cropRect"><i data-h="nw"></i><i data-h="ne"></i><i data-h="sw"></i><i data-h="se"></i></div>
+            </div>
+          </div>
+          <div class="status" id="status" aria-live="polite"></div>
+        </div>
+        <div class="filmstrip" id="filmstrip" aria-label="Photos in this session"></div>
+      </section>
+      <aside class="side" id="side" aria-label="Editing panels"></aside>
+    </main>
+    <nav class="tabbar" id="tabbar" aria-label="Tools"></nav>
+  </div>
+  <div class="toast" id="toast" role="status"></div>
+  <script type="module" src="/src/main.ts"></script>
+</body>
+</html>

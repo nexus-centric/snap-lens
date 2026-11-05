@@ -1,0 +1,21 @@
+{
+  "name": "snap-lens",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "description": "Browser photo editor that copies the color and look of reference photos into editable Lightroom-style sliders. Runs fully on your device.",
+  "license": "MIT",
+  "engines": {
+    "node": ">=20.19"
+  },
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc --noEmit && vite build",
+    "preview": "vite preview",
+    "test": "tsc -p tsconfig.test.json && node tmp/test-build/scripts/test-math.js"
+  },
+  "devDependencies": {
+    "typescript": "5.9.3",
+    "vite": "7.3.7"
+  }
+}
